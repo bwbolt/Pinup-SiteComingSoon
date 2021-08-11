@@ -22,7 +22,7 @@
 			</header>
 
 		<!-- Signup Form -->
-			<form id="signup-form" method="post" action="#">
+			<form  name="email-submit" id="signup-form" method="post" action="#">
 				<input type="email" name="email" id="email" placeholder="Email Address" />
 				<input type="submit" value="Sign Up" />
 			</form>
@@ -42,6 +42,22 @@
 
 		<!-- Scripts -->
 			<script src="assets/js/main.js"></script>
+
+
+			<!--FORM INPUT ROUND 2!!! It WORKED!!!-->
+			<script>
+				const scriptURL = 'https://script.google.com/macros/s/AKfycbzGXaKERzmtltxKU6bKFb1gfTOjEb9Zsuf2X0DEqFGbedGis-ae6HvYGmg4UwKB5FRSXQ/exec'
+				const form = document.forms['email-submit']
+			
+				form.addEventListener('submit', e => {
+					e.preventDefault()
+					fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+						.then(response => console.log('Success!', response))
+						.catch(error => console.error('Error!', error.message))
+				})
+			</script>
+
+
 
 	</body>
 </html>
